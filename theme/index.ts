@@ -21,7 +21,7 @@ export default {
   colors: {
     text: "#000",
     background: "#fff",
-    primary: "#07c",
+    primary: "#58DAB3",
     secondary: "#30c",
     muted: "#f6f6f6",
   },
@@ -108,6 +108,23 @@ export default {
     },
     img: {
       maxWidth: "100%",
+    },
+    ul: {
+      padding: 0,
+    },
+    navlink: {
+      textDecoration: "none",
+    },
+  },
+  links: {
+    button: {
+      fontWeight: "500",
+      color: "inherit",
+      backgroundColor: "primary",
+      textDecoration: "none",
+      px: 4,
+      py: 2,
+      borderRadius: 99,
     },
   },
 } as Theme;
