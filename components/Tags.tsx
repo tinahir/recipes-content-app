@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui";
 import { Entry } from "contentful";
-import ITag from "../types/tag";
+import ITag from "../models/tag";
 
 type Props = {
   items: Entry<ITag>[];

@@ -1,5 +1,5 @@
 import { contentfulClient } from "./content-api";
-import IRecipe from "../types/recipe";
+import IRecipe from "../models/recipe";
 import { ContentType } from "./content-type";
 
 class RecipeService {

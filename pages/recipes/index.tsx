@@ -2,7 +2,7 @@ import * as React from "react";
 /** @jsx jsx */
 import { Link, Grid, jsx } from "theme-ui";
 import Error from "next/error";
-import IRecipe from "../../types/recipe";
+import IRecipe from "../../models/recipe";
 import { Entry } from "contentful";
 import RecipeItem from "../../components/RecipeItem";
 import { replaceWhiteSpace } from "../../shared/stringUtility";

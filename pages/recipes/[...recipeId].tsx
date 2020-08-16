@@ -6,7 +6,7 @@ import { GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Error from "next/error";
-import IRecipe from "../../types/recipe";
+import IRecipe from "../../models/recipe";
 import Tags from "../../components/Tags";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
