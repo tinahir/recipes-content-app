@@ -1,7 +1,6 @@
 import * as React from "react";
 /** @jsx jsx */
 import { Link, Grid, jsx } from "theme-ui";
-import Error from "next/error";
 import IRecipe from "../../models/recipe";
 import { Entry } from "contentful";
 import RecipeItem from "../../components/RecipeItem";
@@ -10,6 +9,7 @@ import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import Head from "next/head";
 import { recipeService } from "../../lib/recipe-service";
+import NotFound from "../404";
 
 type Props = {
   recipes: Entry<IRecipe>[];
@@ -17,7 +17,7 @@ type Props = {
 
 export default function RecipesPage({ recipes }: Props) {
   if (!recipes) {
-    return <Error statusCode={404} title="This recipe could not be found" />;
+    return <NotFound title="This recipe could not be found" />;
   }
 
   return (

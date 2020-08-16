@@ -43,7 +43,9 @@ export default function RecipePage({ recipe }: Props) {
             {recipe.fields.tags && <Tags items={recipe.fields.tags!}></Tags>}
             <Text>{recipe.fields.description}</Text>
             {recipe.fields.chef && (
-              <Text>{recipe.fields.chef!.fields.name}</Text>
+              <Text>{`Shared with you by: ${
+                recipe.fields.chef!.fields.name
+              }`}</Text>
             )}
           </Box>
         </Flex>
