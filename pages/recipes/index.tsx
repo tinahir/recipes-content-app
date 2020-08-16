@@ -1,11 +1,16 @@
 import * as React from "react";
+/** @jsx jsx */
+import { jsx, Link, Styled, Grid } from "theme-ui";
 import { contentfulClient } from "../../lib/content-api";
 import { ContentType } from "../../lib/content-type";
 import IRecipe from "../../types/recipe";
 import { Entry } from "contentful";
-import { Card, Image, Link } from "theme-ui";
+import { Card, Image } from "theme-ui";
 import RecipeItem from "../../components/RecipeItem";
-import { getSeoTitle, replaceWhiteSpace } from "../../shared/stringUtility";
+import { replaceWhiteSpace } from "../../shared/stringUtility";
+import Layout from "../../components/Layout";
+import Header from "../../components/Header";
+import Head from "next/head";
 
 type Props = {
   recipes: Entry<IRecipe>[];
@@ -13,22 +18,38 @@ type Props = {
 
 export default function RecipesPage({ recipes }: Props) {
   return (
-    <div>
-      {recipes.map((recipe) => (
-        <Link
-          key={recipe.sys.id}
-          href={`recipes/${recipe.sys.id}/${replaceWhiteSpace(
-            recipe.fields.title,
-            "-"
-          )}`}
-        >
-          <RecipeItem
-            title={recipe.fields.title}
-            url={recipe.fields.photo?.fields.file.url!}
-          ></RecipeItem>
-        </Link>
-      ))}
-    </div>
+    <Layout header={<Header />}>
+      <Head>
+        <title>Recipes Every Week</title>
+      </Head>
+      <Grid
+        gap={3}
+        sx={{
+          gridTemplateColumns: [
+            [1, "1fr"],
+            [2, "1fr 1fr"],
+          ],
+        }}
+      >
+        {recipes.map((recipe) => (
+          <Link
+            key={recipe.sys.id}
+            sx={{
+              textDecoration: "none",
+            }}
+            href={`recipes/${recipe.sys.id}/${replaceWhiteSpace(
+              recipe.fields.title,
+              "-"
+            )}`}
+          >
+            <RecipeItem
+              title={recipe.fields.title}
+              url={recipe.fields.photo?.fields.file.url!}
+            ></RecipeItem>
+          </Link>
+        ))}
+      </Grid>
+    </Layout>
   );
 }
 
@@ -41,6 +62,6 @@ export async function getStaticProps() {
     props: {
       recipes: data.items,
     },
-    revalidate: 1, // In seconds
+    revalidate: 1,
   };
 }

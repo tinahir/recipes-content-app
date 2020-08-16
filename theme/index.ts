@@ -1,7 +1,8 @@
 import { Theme } from "theme-ui";
 
 export default {
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  breakpoints: ["425px", "769px"],
+  space: [0, 4, 8, 16, 24, 32, 48, 64, 128, 256, 512],
   fonts: {
     body:
       'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
@@ -24,6 +25,8 @@ export default {
     primary: "#58DAB3",
     secondary: "#30c",
     muted: "#f6f6f6",
+    white: "#fff",
+    dark: "#000",
   },
   styles: {
     root: {
@@ -37,6 +40,7 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 5,
+      margin: 0,
     },
     h2: {
       color: "text",
@@ -44,6 +48,7 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 4,
+      margin: 0,
     },
     h3: {
       color: "text",
@@ -112,6 +117,7 @@ export default {
     ul: {
       padding: 0,
     },
+
     navlink: {
       textDecoration: "none",
     },
@@ -125,6 +131,26 @@ export default {
       px: 4,
       py: 2,
       borderRadius: 99,
+      display: "inline-block",
+      fontSize: 3,
     },
+  },
+  cards: {
+    primary: {
+      borderRadius: 4,
+      boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)",
+      backgroundColor: "white",
+      height: "100%",
+    },
+    compact: {
+      padding: 1,
+      borderRadius: 2,
+      border: "1px solid",
+      borderColor: "muted",
+    },
+  },
+  layout: {
+    header: {},
+    footer: {},
   },
 } as Theme;

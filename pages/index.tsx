@@ -1,41 +1,40 @@
 /** @jsx jsx */
-import { jsx, Link } from "theme-ui";
+import { jsx, Link, Styled, Text } from "theme-ui";
 import Head from "next/head";
+import Layout from "../components/Layout";
+import Header from "../components/Header";
 
 export default function HomePage() {
   return (
-    <div
-      sx={{
-        mx: 3,
-      }}
-    >
+    <div>
       <Head>
-        <title>Home</title>
+        <title>Recipes Every Week</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div
-          sx={{
-            py: 3,
-          }}
-        >
-          <h1
+      <Layout header={<Header />}>
+        <div>
+          <Styled.h1
             sx={{
               fontSize: 6,
+              pb: 3,
             }}
           >
             Recipes Every Week
-          </h1>
-          <h2>
-            Choose from a variety of exciting recipes every week. Explore new
-            cuisines and authentic flavors
-          </h2>
+          </Styled.h1>
+          <Text
+            sx={{
+              pb: 5,
+              color: "#a0aec0",
+            }}
+          >
+            Choose from a variety of exciting recipes every week. <br /> Explore
+            new cuisines and authentic flavors.
+          </Text>
         </div>
         <Link href="/recipes" variant="links.button">
-          View Recipes
+          View recipes
         </Link>
-      </main>
-      <footer></footer>
+      </Layout>
     </div>
   );
 }

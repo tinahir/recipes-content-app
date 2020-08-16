@@ -3,31 +3,24 @@ import { Link, jsx } from "theme-ui";
 
 export default function Header() {
   return (
-    <header
+    <div
       sx={{
-        variant: "styles.header",
-        px: 3,
+        maxWidth: 768,
+        mx: "auto",
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      <div
+      <Link
+        href="/"
         sx={{
-          maxWidth: 768,
-          mx: "auto",
-          display: "flex",
-          alignItems: "center",
+          variant: "styles.navlink",
+          fontSize: 6,
+          py: 2,
         }}
       >
-        <Link
-          href="/"
-          sx={{
-            variant: "styles.navlink",
-            fontSize: 6,
-            py: 2,
-          }}
-        >
-          #
-        </Link>
-      </div>
-    </header>
+        #
+      </Link>
+    </div>
   );
 }
