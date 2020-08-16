@@ -133,6 +133,9 @@ export default {
       borderRadius: 99,
       display: "inline-block",
       fontSize: 3,
+      "&:hover": {
+        bg: "#91e7cd",
+      },
     },
   },
   cards: {

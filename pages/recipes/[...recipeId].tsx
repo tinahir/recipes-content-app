@@ -1,17 +1,15 @@
-import { contentfulClient } from "../../lib/content-api";
-import IRecipe from "../../types/recipe";
-import { Entry } from "contentful";
-import { Card, Image, Text, Styled, Box, AspectImage, Flex } from "theme-ui";
-import { useRouter } from "next/dist/client/router";
-import { GetStaticPaths } from "next";
-import Error from "next/error";
 /** @jsx jsx */
-import { Link, jsx } from "theme-ui";
+import { Card, Image, Text, Styled, Box, Flex, jsx } from "theme-ui";
+import { Entry } from "contentful";
+import { contentfulClient } from "../../lib/content-api";
+import { GetStaticPaths } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import Error from "next/error";
+import IRecipe from "../../types/recipe";
 import Tags from "../../components/Tags";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
-import Head from "next/head";
-import RecipeSkeleton from "../../components/RecipeSkeleton";
 import Loading from "../../components/Loading";
 
 type Props = {
@@ -25,14 +23,8 @@ export default function RecipePage({ recipe }: Props) {
     return <Error statusCode={404} title="This recipe could not be found" />;
   }
 
-  if (isFallback) {
-    return <Loading />;
-  }
-
-  const renderRecipe = () => {};
-
-  return (
-    <Layout header={<Header />}>
+  const renderRecipe = () => (
+    <>
       <Head>
         <title>{recipe.fields.title}</title>
       </Head>
@@ -56,6 +48,18 @@ export default function RecipePage({ recipe }: Props) {
           </Box>
         </Flex>
       </Card>
+    </>
+  );
+
+  return (
+    <Layout header={<Header />}>
+      {isFallback ? (
+        <Loading>
+          <Text>Loading...</Text>
+        </Loading>
+      ) : (
+        renderRecipe()
+      )}
     </Layout>
   );
 }
