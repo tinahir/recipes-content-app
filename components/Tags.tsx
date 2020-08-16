@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Link, jsx, Badge, Styled } from "theme-ui";
+import { jsx, Styled } from "theme-ui";
 import { Entry } from "contentful";
 import ITag from "../types/tag";
 

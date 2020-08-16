@@ -45,14 +45,6 @@ export default function Layout({ children, header }: Props) {
           {children}
         </div>
       </main>
-      {/* <footer
-        sx={{
-          width: "100%",
-          variant: "layout.footer",
-        }}
-      >
-        Footer content
-      </footer> */}
     </div>
   );
 }
