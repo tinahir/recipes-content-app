@@ -83,8 +83,8 @@ export async function getStaticProps({ params }: any) {
   const result = await recipeService.getById(id);
   return {
     props: {
-      recipe: result?.data,
-      error: result?.error,
+      recipe: result.data,
+      error: result.error,
     },
   };
 }

@@ -35,8 +35,8 @@ class RecipeService {
         code: e.sys.id,
         message: e.message,
       });
-      return result;
     }
+    return result;
   }
 }
 
