@@ -1,10 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui";
-import { Entry } from "contentful";
-import ITag from "../models/tag";
 
 type Props = {
-  items: Entry<ITag>[];
+  items: string[];
 };
 
 export default function Tags({ items }: Props) {
@@ -13,7 +11,7 @@ export default function Tags({ items }: Props) {
       <Styled.ul>
         {items.map((item) => (
           <li
-            key={item.fields.name}
+            key={item}
             sx={{
               listStyle: "none",
               backgroundColor: " #f6f6f6",
@@ -26,7 +24,7 @@ export default function Tags({ items }: Props) {
               fontWeight: 700,
             }}
           >
-            {item.fields.name}
+            {item}
           </li>
         ))}
       </Styled.ul>
