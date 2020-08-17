@@ -1,5 +1,5 @@
-interface ITag {
+interface ITagContent {
   name: string;
 }
 
-export default ITag;
+export default ITagContent;

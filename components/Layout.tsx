@@ -19,7 +19,7 @@ export default function Layout({ children, header }: Props) {
       <header
         sx={{
           variant: "styles.header",
-          backgroundColor: "white",
+          backgroundColor: "light",
           marginBottom: 4,
           px: 3,
         }}

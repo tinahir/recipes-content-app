@@ -24,13 +24,14 @@ export default function HomePage() {
           <Text
             sx={{
               pb: 5,
-              color: "#a0aec0",
+              color: "gray-1",
             }}
           >
             Choose from a variety of exciting recipes every week. <br /> Explore
             new cuisines and authentic flavors.
           </Text>
         </div>
+
         <Link href="/recipes" variant="links.button">
           View recipes
         </Link>

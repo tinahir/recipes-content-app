@@ -1,5 +1,5 @@
-interface IChef {
+interface IChefContent {
   name: string;
-};
+}
 
-export default IChef;
+export default IChefContent;

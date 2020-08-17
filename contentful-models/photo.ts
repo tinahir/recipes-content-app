@@ -1,4 +1,4 @@
-interface IPhoto  {
+interface IPhotoContent  {
   title: string;
   file: {
     contentType: string;
@@ -7,4 +7,4 @@ interface IPhoto  {
   };
 };
 
-export default IPhoto;
+export default IPhotoContent;

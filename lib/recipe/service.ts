@@ -1,22 +1,42 @@
 import { contentfulClient } from "../content-api";
 import { ContentType } from "../content-type";
-import recipeAdapter from "./adapter";
-import IRecipe from "../../contentful-models/recipe";
+import { recipeAdapter } from "./adapter";
+import { IResult, Result } from "../result";
+import { IRecipe } from "./model";
+import IRecipeContent from "../../contentful-models/recipe";
 
 class RecipeService {
   async list() {
-    const data = await contentfulClient.getEntries<IRecipe>({
-      content_type: ContentType.Recipe,
-    });
+    let result: IResult<IRecipe[]>;
+    try {
+      const data = await contentfulClient.getEntries<IRecipeContent>({
+        content_type: ContentType.Recipe,
+      });
+      const items = data.items.map((item) => recipeAdapter.convert(item));
 
-    const items = data.items.map((item) => recipeAdapter.convert(item));
-    return items;
+      result = new Result(items);
+    } catch (e) {
+      result = new Result(null, {
+        code: e.sys.id,
+        message: e.message,
+      });
+    }
+    return result;
   }
 
   async getById(id: string) {
-    const data = await contentfulClient.getEntry<IRecipe>(id);
-    const item = recipeAdapter.convert(data);
-    return item;
+    let result: IResult<IRecipe>;
+    try {
+      const data = await contentfulClient.getEntry<IRecipeContent>(id);
+      const item = recipeAdapter.convert(data);
+      result = new Result(item);
+    } catch (e) {
+      result = new Result(null, {
+        code: e.sys.id,
+        message: e.message,
+      });
+      return result;
+    }
   }
 }
 

@@ -25,8 +25,9 @@ export default {
     primary: "#58DAB3",
     secondary: "#30c",
     muted: "#f6f6f6",
-    white: "#fff",
+    light: "#fff",
     dark: "#000",
+    "gray-1": "#a0aec0",
   },
   styles: {
     root: {
@@ -142,7 +143,7 @@ export default {
     primary: {
       borderRadius: 4,
       boxShadow: "0 0 8px rgba(0, 0, 0, 0.125)",
-      backgroundColor: "white",
+      backgroundColor: "light",
       height: "100%",
     },
     compact: {

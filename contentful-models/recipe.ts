@@ -1,15 +1,15 @@
 import { Entry } from "contentful";
-import IPhoto from "./photo";
-import ITag from "./tag";
-import IChef from "./chef";
+import IPhotoContent from "./photo";
+import ITagContent from "./tag";
+import IChefContent from "./chef";
 
-interface IRecipe {
+interface IRecipeContent {
   calories: number;
   description: string;
   title: string;
-  photo?: Entry<IPhoto>;
-  tags?: Entry<ITag>[];
-  chef?: Entry<IChef>;
+  photo?: Entry<IPhotoContent>;
+  tags?: Entry<ITagContent>[];
+  chef?: Entry<IChefContent>;
 }
 
-export default IRecipe;
+export default IRecipeContent;

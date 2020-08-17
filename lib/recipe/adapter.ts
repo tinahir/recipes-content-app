@@ -1,11 +1,11 @@
 import { Entry } from "contentful";
-import IAdapter from "../IAdapter";
-import IRecipe from "../../contentful-models/recipe";
-import IRecipeModel from "./model";
+import IAdapter from "../adapter";
+import IRecipeContent from "../../contentful-models/recipe";
+import { IRecipe } from "./model";
 
-class RecipeAdapter implements IAdapter<IRecipeModel> {
-  convert(item: Entry<IRecipe>) {
-    let recipe: IRecipeModel = {
+class RecipeAdapter implements IAdapter<IRecipe> {
+  convert(item: Entry<IRecipeContent>) {
+    let recipe: IRecipe = {
       id: item.sys.id,
       title: item.fields.title,
       description: item.fields.description,
@@ -25,4 +25,4 @@ class RecipeAdapter implements IAdapter<IRecipeModel> {
   }
 }
 
-export default new RecipeAdapter();
+export const recipeAdapter = new RecipeAdapter();

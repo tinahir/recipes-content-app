@@ -4,24 +4,30 @@ import { Entry } from "contentful";
 import { GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Error from "next/error";
-import IRecipe from "../../contentful-models/recipe";
 import Tags from "../../components/Tags";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import { recipeService } from "../../lib/recipe/service";
-import IRecipeModel from "../../lib/recipe/model";
+import { IRecipe } from "../../lib/recipe/model";
+import NotFound from "../404";
+import { Error } from "../../lib/result";
 
 type Props = {
-  recipe: IRecipeModel;
+  recipe: IRecipe;
+  error: Error;
 };
 
-export default function RecipePage({ recipe }: Props) {
+export default function RecipePage({ recipe, error }: Props) {
   const { isFallback } = useRouter();
+  if (error) {
+    return (
+      <NotFound statusCode={500} title={`${error.code}: ${error.message}`} />
+    );
+  }
 
   if (!isFallback && !recipe) {
-    return <Error statusCode={404} title="This recipe could not be found" />;
+    return <NotFound statusCode={404} title="This recipe could not be found" />;
   }
 
   const renderRecipe = () => (
@@ -44,7 +50,7 @@ export default function RecipePage({ recipe }: Props) {
             {recipe.tags && <Tags items={recipe.tags!}></Tags>}
             <Text>{recipe.description}</Text>
             {recipe.chefName && (
-              <Text>{`Shared with you by: ${recipe.chefName!.name}`}</Text>
+              <Text>{`Shared with you by: ${recipe.chefName}`}</Text>
             )}
           </Box>
         </Flex>
@@ -74,11 +80,11 @@ export async function getStaticProps({ params }: any) {
     recipeId: [id],
   } = params;
 
-  const data = await recipeService.getById(id);
-
+  const result = await recipeService.getById(id);
   return {
     props: {
-      recipe: data,
+      recipe: result?.data,
+      error: result?.error,
     },
   };
 }

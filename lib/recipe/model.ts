@@ -1,4 +1,4 @@
-export default interface IRecipeModel {
+export interface IRecipe {
   id: string;
   title: string;
   description: string;

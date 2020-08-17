@@ -1,24 +1,28 @@
-import * as React from "react";
 /** @jsx jsx */
 import { Link, Grid, jsx } from "theme-ui";
-import IRecipe from "../../contentful-models/recipe";
-import { Entry } from "contentful";
 import RecipeItem from "../../components/RecipeItem";
-import { replaceWhiteSpace } from "../../shared/stringUtility";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import Head from "next/head";
-import { recipeService } from "../../lib/recipe/service";
 import NotFound from "../404";
-import IRecipeModel from "../../lib/recipe/model";
+import { replaceWhiteSpace } from "../../shared/stringUtility";
+import { recipeService } from "../../lib/recipe/service";
+import { IRecipe } from "../../lib/recipe/model";
+import { Error } from "../../lib/result";
 
 type Props = {
-  recipes: IRecipeModel[];
+  recipes: IRecipe[];
+  error: Error;
 };
 
-export default function RecipesPage({ recipes }: Props) {
-  if (!recipes) {
-    return <NotFound title="This recipe could not be found" />;
+export default function RecipesPage({ recipes, error }: Props) {
+  if (error) {
+    return (
+      <NotFound statusCode={500} title={`${error.code}: ${error.message}`} />
+    );
+  }
+  if (Array.isArray(recipes) && recipes.length === 0) {
+    return <NotFound title="This recipes could not be found" />;
   }
 
   return (
@@ -55,19 +59,12 @@ export default function RecipesPage({ recipes }: Props) {
 }
 
 export async function getStaticProps() {
-  try {
-    const data = await recipeService.list();
-    return {
-      props: {
-        recipes: data,
-      },
-      revalidate: 1,
-    };
-  } catch (e) {
-    return {
-      props: {
-        recipes: null,
-      },
-    };
-  }
+  const result = await recipeService.list();
+  return {
+    props: {
+      recipes: result.data,
+      error: result.error,
+    },
+    revalidate: 1,
+  };
 }
