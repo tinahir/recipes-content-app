@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Card, Image, Text, Styled, Box, Flex, jsx } from "theme-ui";
-import { Entry } from "contentful";
+import { FaArrowLeft } from "react-icons/fa";
 import { GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -46,23 +46,57 @@ export default function RecipePage({ recipe, error }: Props) {
             <Image src={recipe.url} />
           </div>
           <Box p={3}>
-            <Styled.h2>{recipe.title}</Styled.h2>
-            {recipe.tags && <Tags items={recipe.tags!}></Tags>}
-            <Text>{recipe.description}</Text>
+            <Styled.h2
+              sx={{
+                pb: 3,
+              }}
+            >
+              {recipe.title}
+            </Styled.h2>
+            {recipe.tags && (
+              <Tags
+                sx={{
+                  pb: 3,
+                }}
+                items={recipe.tags!}
+              ></Tags>
+            )}
+            <Text
+              sx={{
+                pb: 3,
+              }}
+            >
+              {recipe.description}
+            </Text>
             {recipe.chefName && (
-              <Text>{`Shared with you by: ${recipe.chefName}`}</Text>
+              <Text>
+                Shared with you by:{" "}
+                <span
+                  sx={{
+                    fontWeight: "bold",
+                    color: "primary",
+                  }}
+                >
+                  {recipe.chefName}
+                </span>
+              </Text>
             )}
           </Box>
         </Flex>
       </Card>
     </>
   );
-
+  const header = (
+    <Header
+      defaultBackHref="/recipes"
+      renderBackButton={() => <FaArrowLeft />}
+    />
+  );
   return (
-    <Layout header={<Header />}>
+    <Layout header={header}>
       {isFallback ? (
         <Loading>
-          <Text>Loading...</Text>
+          <Text>Your favourite recipe is loading...</Text>
         </Loading>
       ) : (
         renderRecipe()
@@ -75,7 +109,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths: [], fallback: true };
 };
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps({
+  params,
+}: {
+  params: { recipeId: string[] };
+}) {
   const {
     recipeId: [id],
   } = params;

@@ -1,6 +1,6 @@
+/** @jsx jsx */
 import Skeleton from "./Skeleton";
 import { Flex, Box } from "theme-ui";
-/** @jsx jsx */
 import { Link, jsx } from "theme-ui";
 
 export default function RecipeSkeleton() {

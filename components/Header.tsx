@@ -1,7 +1,15 @@
 /** @jsx jsx */
-import { Link, jsx } from "theme-ui";
+import { Link, jsx, Image } from "theme-ui";
+import { ReactNode } from "react";
 
-export default function Header() {
+type Props = {
+  defaultBackHref?: string;
+  renderBackButton?: () => ReactNode;
+};
+export default function Header({
+  defaultBackHref = "/",
+  renderBackButton,
+}: Props) {
   return (
     <div
       sx={{
@@ -12,14 +20,18 @@ export default function Header() {
       }}
     >
       <Link
-        href="/"
+        href={defaultBackHref}
         sx={{
           variant: "styles.navlink",
-          fontSize: 6,
+          fontSize: 5,
           py: 2,
         }}
       >
-        #
+        {renderBackButton ? (
+          renderBackButton()
+        ) : (
+          <Image src="https://marleyspoon.com/images/ms/svg/logo-martha-marley-spoon-e532d6d35b.svg" />
+        )}
       </Link>
     </div>
   );
