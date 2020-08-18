@@ -1,5 +1,5 @@
 {
-  "name": "recipes-content-app",
+  "name": "recipes-content",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,5 +21,7 @@
     "@types/react": "^16.9.46",
     "@types/theme-ui": "^0.3.6",
     "typescript": "^3.9.7"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
