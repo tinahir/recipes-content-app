@@ -65,6 +65,6 @@ export async function getStaticProps() {
       recipes: result.data,
       error: result.error,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 }
