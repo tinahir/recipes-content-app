@@ -30,7 +30,12 @@ export default function Header({
         {renderBackButton ? (
           renderBackButton()
         ) : (
-          <Image src="https://marleyspoon.com/images/ms/svg/logo-martha-marley-spoon-389f42c71a.svg" />
+          <Image
+            sx={{
+              height: 48,
+            }}
+            src="https://marleyspoon.com/images/ms/svg/logo-martha-marley-spoon-389f42c71a.svg"
+          />
         )}
       </Link>
     </div>
