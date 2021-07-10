@@ -1,14 +1,15 @@
-/** @jsx jsx */
-import { jsx, Styled, Box } from "theme-ui";
+/** @jsxImportSource theme-ui */
+import { jsx, Box, Themed, ThemeUIStyleObject } from "theme-ui";
 
 type Props = {
   items: string[];
+  sx?: ThemeUIStyleObject;
 };
 
-export default function Tags({ items, ...props }: Props) {
+export default function Tags({ items, sx }: Props) {
   return (
-    <Box {...props}>
-      <Styled.ul>
+    <Box sx={sx}>
+      <Themed.ul>
         {items.map((item) => (
           <li
             key={item}
@@ -27,7 +28,7 @@ export default function Tags({ items, ...props }: Props) {
             {item}
           </li>
         ))}
-      </Styled.ul>
+      </Themed.ul>
     </Box>
   );
 }

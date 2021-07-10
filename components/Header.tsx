@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import { Link, jsx, Image } from "theme-ui";
 import { ReactNode } from "react";
 
@@ -34,6 +34,7 @@ export default function Header({
             sx={{
               height: 48,
             }}
+            alt="logo martha marley spoon"
             src="https://marleyspoon.com/images/ms/svg/logo-martha-marley-spoon-389f42c71a.svg"
           />
         )}

@@ -4,8 +4,7 @@ export default {
   breakpoints: ["425px", "769px"],
   space: [0, 4, 8, 16, 24, 32, 48, 64, 128, 256, 512],
   fonts: {
-    body:
-      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
@@ -129,9 +128,9 @@ export default {
       color: "inherit",
       backgroundColor: "primary",
       textDecoration: "none",
-      px: 4,
+      px: 6,
       py: 2,
-      borderRadius: 99,
+      borderRadius: 8,
       display: "inline-block",
       fontSize: 3,
       "&:hover": {

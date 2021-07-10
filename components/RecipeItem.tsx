@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import { Card, Image, Text, jsx, Box } from "theme-ui";
 
 type Props = {
@@ -11,6 +11,7 @@ export default function RecipeItem({ title, url }: Props) {
     <Card>
       <Image
         src={url}
+        alt={title}
         sx={{
           objectFit: "cover",
         }}

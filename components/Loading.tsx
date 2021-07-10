@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import { ReactNode } from "react";
 import { jsx, Spinner, Box } from "theme-ui";
 

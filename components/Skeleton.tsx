@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import { ReactNode } from "react";
 import { jsx } from "theme-ui";
 

@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { Card, Image, Text, Styled, Box, Flex, jsx } from "theme-ui";
+/** @jsxImportSource theme-ui */
+import { Card, Image, Text, Themed, Box, Flex, jsx } from "theme-ui";
 import { FaArrowLeft } from "react-icons/fa";
 import { GetStaticPaths } from "next";
 import Head from "next/head";
@@ -43,16 +43,16 @@ export default function RecipePage({ recipe, error }: Props) {
           }}
         >
           <div sx={{ height: 256, overflow: "hidden" }}>
-            <Image src={recipe.url} />
+            <Image src={recipe.url} alt={recipe.title} />
           </div>
           <Box p={3}>
-            <Styled.h2
+            <Themed.h2
               sx={{
                 pb: 3,
               }}
             >
               {recipe.title}
-            </Styled.h2>
+            </Themed.h2>
             {recipe.tags && (
               <Tags
                 sx={{

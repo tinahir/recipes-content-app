@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx, Link, Styled, Text } from "theme-ui";
+/** @jsxImportSource theme-ui */
+import { jsx, Link, Themed, Text } from "theme-ui";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
@@ -12,15 +12,19 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout header={<Header />}>
-        <div>
-          <Styled.h1
+        <div
+          sx={{
+            pb: 3,
+          }}
+        >
+          <Themed.h1
             sx={{
               fontSize: 6,
               pb: 3,
             }}
           >
             Recipes Every Week
-          </Styled.h1>
+          </Themed.h1>
           <Text
             sx={{
               pb: 5,

@@ -1,4 +1,4 @@
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import { Link, Grid, jsx } from "theme-ui";
 import RecipeItem from "../../components/RecipeItem";
 import Layout from "../../components/Layout";
