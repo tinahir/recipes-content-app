@@ -4,14 +4,14 @@ import { FaArrowLeft } from "react-icons/fa";
 import { GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Tags from "../../components/Tags";
-import Layout from "../../components/Layout";
-import Header from "../../components/Header";
-import Loading from "../../components/Loading";
-import { recipeService } from "../../lib/recipe/service";
-import { IRecipe } from "../../lib/recipe/model";
+import Tags from "@/components/Tags";
+import Layout from "@/components/Layout";
+import Header from "@/components/Header";
+import Loading from "@/components/Loading";
+import { recipeService } from "@/lib/recipe/service";
+import { IRecipe } from "@/lib/recipe/model";
 import NotFound from "../404";
-import { Error } from "../../lib/result";
+import { Error } from "@/lib/result";
 
 type Props = {
   recipe: IRecipe;

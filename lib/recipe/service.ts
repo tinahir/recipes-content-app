@@ -3,7 +3,7 @@ import { ContentType } from "../content-type";
 import { recipeAdapter } from "./adapter";
 import { IResult, Result } from "../result";
 import { IRecipe } from "./model";
-import IRecipeContent from "../../contentful-models/recipe";
+import IRecipeContent from "@/contentful-models/recipe";
 
 class RecipeService {
   async list() {

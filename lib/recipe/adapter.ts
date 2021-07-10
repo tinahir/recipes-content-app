@@ -1,6 +1,6 @@
 import { Entry } from "contentful";
 import IAdapter from "../adapter";
-import IRecipeContent from "../../contentful-models/recipe";
+import IRecipeContent from "@/contentful-models/recipe";
 import { IRecipe } from "./model";
 
 class RecipeAdapter implements IAdapter<IRecipe> {

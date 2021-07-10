@@ -1,14 +1,14 @@
 /** @jsxImportSource theme-ui */
 import { Link, Grid, jsx } from "theme-ui";
-import RecipeItem from "../../components/RecipeItem";
-import Layout from "../../components/Layout";
-import Header from "../../components/Header";
+import RecipeItem from "@/components/RecipeItem";
+import Layout from "@/components/Layout";
+import Header from "@/components/Header";
 import Head from "next/head";
 import NotFound from "../404";
 import { replaceWhiteSpace } from "../../shared/stringUtility";
-import { recipeService } from "../../lib/recipe/service";
-import { IRecipe } from "../../lib/recipe/model";
-import { Error } from "../../lib/result";
+import { recipeService } from "@/lib/recipe/service";
+import { IRecipe } from "@/lib/recipe/model";
+import { Error } from "@/lib/result";
 
 type Props = {
   recipes: IRecipe[];
