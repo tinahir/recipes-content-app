@@ -1,21 +1,18 @@
 /** @jsxImportSource theme-ui */
-import { Link, Grid, jsx } from "theme-ui";
+import { Link, Grid } from "theme-ui";
 import RecipeItem from "@/components/RecipeItem";
 import Layout from "@/components/Layout";
 import Header from "@/components/Header";
 import Head from "next/head";
-import NotFound from "../404";
-import { replaceWhiteSpace } from "../../shared/stringUtility";
+import NotFound from "@/pages/404";
+import { replaceWhiteSpace } from "@/shared/stringUtility";
 import { recipeService } from "@/lib/recipe/service";
-import { IRecipe } from "@/lib/recipe/model";
-import { Error } from "@/lib/result";
+import { InferGetStaticPropsType } from "next";
 
-type Props = {
-  recipes: IRecipe[];
-  error: Error;
-};
-
-export default function RecipesPage({ recipes, error }: Props) {
+export default function RecipesPage({
+  recipes,
+  error,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   if (error) {
     return (
       <NotFound statusCode={500} title={`${error.code}: ${error.message}`} />
@@ -39,7 +36,7 @@ export default function RecipesPage({ recipes, error }: Props) {
           ],
         }}
       >
-        {recipes.map((recipe) => (
+        {recipes?.map((recipe) => (
           <Link
             key={recipe.id}
             sx={{
